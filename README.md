@@ -1,6 +1,9 @@
 - [CodeGuardian](#codeguardian)
 - [What do i want?](#what-do-i-want)
 - [ToDo](#todo)
+- [How to run tests](#how-to-run-tests)
+  - [BDD tests](#bdd-tests)
+  - [unittests](#unittests)
   - [Criteria to check for](#criteria-to-check-for)
     - [Keep all entities small](#keep-all-entities-small)
     - [cyclomatic complexity](#cyclomatic-complexity)
@@ -30,6 +33,13 @@ I want an AI that analyzes my code from different quality perspectives and provi
 # ToDo
 - Feature: create report showing cyclomatic complexity for a single file input
 
+# How to run tests
+## BDD tests
+1. activate venv `source venv/bin/activate`
+2. run behave `behave ara/features`
+
+## unittests
+1. run pytest `pytest`
 
 ## Criteria to check for
 - Keep All Entities Small
