@@ -184,7 +184,8 @@ I want to have a report detailing what is currently wrong with  my code and wher
 ### Examples (v1)
 ```
 path/to/file: 
-cc - 2 
+average cc - 2 
+total cc - 500
 nesting over max - 3 
 lines over max - 100 
 used global vars - true 
