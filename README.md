@@ -176,12 +176,13 @@ I want to have a report detailing what is currently wrong with  my code and wher
 - violations of CQRS principle (command query separation) per method/function
 
 ### Examples (v1)
+```
 path/to/file: 
-cc - 2
-nesting over max - 3
-lines over max - 100
-used global vars - true
-unwrapped logic - true
+cc - 2 
+nesting over max - 3 
+lines over max - 100 
+used global vars - true 
+unwrapped logic - true 
 
 	function1: 
 		lines over max - 10
@@ -197,8 +198,11 @@ unwrapped logic - true
 		methods over max - 3
 		parameters over max - 1
 		lines over max - 50
+```
+
 
 ### config
+```
 max_methods: 20
 function_max_lines: 15
 max_parameters: 4
@@ -206,6 +210,7 @@ class_max_lines: 200
 file_max_lines: 500
 global_max_cc: 10
 file_max_cc: 3
+```
 
 ## Global report(v1)
 - total cyclomatic complexity
