@@ -1,5 +1,6 @@
 - [CodeGuardian](#codeguardian)
 - [What do i want?](#what-do-i-want)
+- [ToDo](#todo)
   - [Criteria to check for](#criteria-to-check-for)
     - [Keep all entities small](#keep-all-entities-small)
     - [cyclomatic complexity](#cyclomatic-complexity)
@@ -24,6 +25,11 @@ The next generation of ai assisted agent based code reviews
 In order to have fast code reviews
 As a Developer
 I want an AI that analyzes my code from different quality perspectives and provides suggestions for improvements
+
+
+# ToDo
+- Feature: create report showing cyclomatic complexity for a single file input
+
 
 ## Criteria to check for
 - Keep All Entities Small
