@@ -1,5 +1,6 @@
 from os.path import exists
 from src.report import generate_report
+from json import load
 
 @given(u'a file "{input_file_path}"')
 def step_impl(context, input_file_path):
@@ -17,9 +18,10 @@ def step_impl(context, output_file_path):
 
 @when(u'I read the file')
 def step_impl(context):
-    raise NotImplementedError(u'STEP: When I read the file')
+    with open (context.input_file_path) as file: 
+        context.report_dict = load(file)
 
 
 @then(u'the datapoint {datapoint} contains {data}')
 def step_impl(context, datapoint, data):
-    raise NotImplementedError(u'STEP: Then the datapoint {datapoint} contains {data}')
+    assert context.report_dict[datapoint] == data
