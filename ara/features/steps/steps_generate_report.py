@@ -24,4 +24,4 @@ def step_impl(context):
 
 @then(u'the datapoint {datapoint} contains {data}')
 def step_impl(context, datapoint, data):
-    assert context.report_dict[datapoint] == data
+    assert str(context.report_dict[datapoint]) == data
