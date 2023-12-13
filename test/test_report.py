@@ -1,6 +1,6 @@
 from os.path import exists
 from json import load
-from src.report import generate_report, read_file, add_path_to_report_dict, calculate_avg_cc
+from src.report import generate_report, read_file, add_path_to_report_dict, calculate_avg_cc, calculate_total_cc
 from pytest import raises
 
 
@@ -33,3 +33,6 @@ def test_that_dict_with_path_is_returned():
 
 def test_that_calculate_avg_cc_returns_avg_cc():
     assert calculate_avg_cc('./input/code_file.py') == 2.0
+
+def test_that_calculate_total_cc_returns_total_cc():
+    assert calculate_total_cc('.input/code_file.py') == 4.0
