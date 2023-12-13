@@ -23,20 +23,18 @@ def calculate_avg_cc(file_path: str) -> float:
     avg_cc: float = analysis_results.average_cyclomatic_complexity
     return avg_cc
 
-    # # List and print the CCN for each function
-    # print("\nCCN per function:")
-    # for function in analysis_results.function_list:
-    #     print(f"Function: {function.name}, CCN: {function.cyclomatic_complexity}")
+
 def calculate_total_cc(file_path: str) -> float: 
     analysis_results: object = analyze_file(file_path)
     cc_per_function: list = [function.cyclomatic_complexity for function in analysis_results.function_list]
-    total_cc: float = sum(cc_per_function)
+    total_cc: float = float(sum(cc_per_function))
     return total_cc
 
 
 def generate_report(file_path: str, output_path='./output/report.json'):
     report_dict: dict = add_path_to_report_dict(file_path)
     report_dict['avg_cc'] = calculate_avg_cc(file_path)
+    report_dict['total_cc'] = calculate_total_cc(file_path)
     code_content: str = read_file(file_path)
 
 
