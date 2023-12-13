@@ -40,3 +40,7 @@ def generate_report(file_path: str, output_path='./output/report.json'):
 
     with open(output_path, 'w') as file:
         dump(report_dict, file, indent=4)
+
+
+if __name__ == '__main__': 
+    generate_report('./src/report.py')
