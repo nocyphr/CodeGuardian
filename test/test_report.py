@@ -1,6 +1,6 @@
 from os.path import exists
 from json import load
-from src.report import generate_report, read_file
+from src.report import generate_report, read_file, add_path_to_report_dict
 from pytest import raises
 
 
@@ -25,3 +25,8 @@ def test_that_read_file_raises_error_for_empty_file():
     with raises(Exception) as e:
         result: str = read_file(empty_file_path)
     assert f'file {empty_file_path} did not contain code' in str(e.value)
+
+
+def test_that_dict_with_path_is_returned():
+    report_dict: dict = add_path_to_report_dict('./input/code_file.py')
+    assert report_dict['path'] == './input/code_file.py'
