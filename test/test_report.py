@@ -35,4 +35,4 @@ def test_that_calculate_avg_cc_returns_avg_cc():
     assert calculate_avg_cc('./input/code_file.py') == 2.0
 
 def test_that_calculate_total_cc_returns_total_cc():
-    assert calculate_total_cc('.input/code_file.py') == 4.0
+    assert calculate_total_cc('./input/code_file.py') == 4.0
