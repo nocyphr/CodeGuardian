@@ -8,6 +8,9 @@ def read_file(file_path: str) -> str:
 
     with open(file_path) as file: 
         file_content: str = file.read()
+
+    if not file_content.strip():
+        raise Exception(f'file {file_path} did not contain code')
     return file_content
 
 

@@ -19,3 +19,9 @@ def test_that_generate_report_fails_for_invalid_input_path():
 def test_that_read_file_returns_non_empty_string():
     result: str = read_file('./input/code_file.py')
     assert len(result) > 0
+
+def test_that_read_file_raises_error_for_empty_file():
+    empty_file_path: str = './input/empty_file.py'
+    with raises(Exception) as e:
+        result: str = read_file(empty_file_path)
+    assert f'file {empty_file_path} did not contain code' in str(e.value)
