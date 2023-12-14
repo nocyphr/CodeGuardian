@@ -21,10 +21,15 @@ Feature: generate_report
       | avg_cc    | 2.0                   |
       | total_cc  | 4.0                   |
 
-  # Scenario Outline: report contains lines_over_max if long file was input
-  #   Given a report file "./output/report.json"
-  #   And a code file <input_file_path>
-  #   When I analyze the file
-  #   And I read the file
-  #   Then "lines_over_max"
+  Scenario Outline: report contains lines_over_max if long file was input
+    Given a report file "./output/report.json"
+    And a code file "<input_file_path>"
+    When I analyze the code file
+    And I read the report file
+    Then the datapoint <datapoint> contains <data>
+
+    Examples: 
+    | input_file_path       | datapoint       | data  |
+    | ./input/code_file.py  | lines_over_max  | -     |
+    | ./input/big_file.py   | lines_over_max  | 50    |
 
