@@ -11,7 +11,7 @@ def step_impl(context, input_file_path):
     context.code_file_path = input_file_path
 
 
-@when(u'I analyze the file')
+@when(u'I analyze the code file')
 def step_impl(context):
     generate_report(context.code_file_path)
 
@@ -20,7 +20,7 @@ def step_impl(context):
 def step_impl(context, output_file_path):
     assert exists(output_file_path), f'file: {output_file_path} was not found'
 
-@when(u'I read the file')
+@when(u'I read the report file')
 def step_impl(context):
     with open (context.report_file_path) as file: 
         context.report_dict = load(file)

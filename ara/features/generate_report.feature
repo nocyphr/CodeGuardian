@@ -6,13 +6,13 @@ Feature: generate_report
 
   Scenario: report is generated in output folder
     Given a code file "./input/code_file.py"
-    When I analyze the file
+    When I analyze the code file
     Then I find a json file "./output/report.json"
     
 
   Scenario Outline: report contains expected data
     Given a report file "./output/report.json"
-    When I read the file
+    When I read the report file
     Then the datapoint <datapoint> contains <data>
 
     Examples:
@@ -22,8 +22,9 @@ Feature: generate_report
       | total_cc  | 4.0                   |
 
   # Scenario Outline: report contains lines_over_max if long file was input
-  #   Given a file <input_file_path>
-  #   Given a file "./output/report.json"
-  #   When I count the number of lines
+  #   Given a report file "./output/report.json"
+  #   And a code file <input_file_path>
+  #   When I analyze the file
+  #   And I read the file
   #   Then "lines_over_max"
 
