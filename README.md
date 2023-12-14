@@ -32,6 +32,8 @@ I want an AI that analyzes my code from different quality perspectives and provi
 
 # ToDo
 - Feature: create report showing cyclomatic complexity for a single file input
+  - write unit-test for function counting lines, then make it pass, should return len of findall - regex: ^(?!\s*$)(?!\s*#).+
+
 
 # How to run tests
 ## BDD tests
