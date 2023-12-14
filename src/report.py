@@ -42,5 +42,5 @@ def generate_report(file_path: str, output_path='./output/report.json'):
         dump(report_dict, file, indent=4)
 
 
-if __name__ == '__main__': 
-    generate_report('./src/report.py')
+# if __name__ == '__main__': 
+#     generate_report('./src/report.py')
