@@ -40,7 +40,7 @@ I want an AI that analyzes my code from different quality perspectives and provi
 
 ## unittests
 1. run pytest `pytest`
-2. for test-coverage run `pytest --cov`
+2. for test-coverage run `pytest --cov --cov-report term-missing`
 
 ## Criteria to check for
 - Keep All Entities Small
