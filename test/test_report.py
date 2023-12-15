@@ -3,7 +3,7 @@ from json import load
 from src.report import generate_report, FileHandler
 from pytest import raises
 
-# Adjust the tests to use FileHandler
+
 
 def test_that_report_file_is_created():
     generate_report('./input/code_file.py')

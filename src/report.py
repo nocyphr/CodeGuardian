@@ -6,7 +6,7 @@ import re
 class FileHandler:
     def __init__(self, file_path: str):
         self.file_path = file_path
-        self.max_file_lines = 500  # Hardcoded class variable
+        self.max_file_lines = 500
 
         if not exists(self.file_path):
             raise FileNotFoundError(f'No file found at {self.file_path}')

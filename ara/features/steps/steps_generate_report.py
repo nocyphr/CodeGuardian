@@ -2,7 +2,7 @@ from os.path import exists
 from src.report import generate_report, FileHandler
 from json import load
 
-# Adjust the steps to use FileHandler where necessary
+
 
 @given(u'a report file "{input_file_path}"')
 def step_impl(context, input_file_path):
