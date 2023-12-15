@@ -31,5 +31,5 @@ Feature: generate_report
     Examples: 
     | input_file_path       | datapoint       | data  |
     | ./input/code_file.py  | lines_over_max  | -     |
-    | ./input/big_file.py   | lines_over_max  | 50    |
+    | ./input/big_file.py   | lines_over_max  | 659   |
 

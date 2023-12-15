@@ -24,9 +24,9 @@ def count_lines(file_content: str) -> int:
     return len(matches)
 
 
-
 def add_path_to_report_dict(file_path: str) -> dict: 
     return {'path': file_path}
+
 
 def calculate_avg_cc(file_path: str) -> float: 
     analysis_results: object = analyze_file(file_path)
@@ -42,10 +42,12 @@ def calculate_total_cc(file_path: str) -> float:
 
 
 def generate_report(file_path: str, output_path='./output/report.json'):
+    max_file_lines = 500
     code_content: str = read_file(file_path)
     report_dict: dict = add_path_to_report_dict(file_path)
     report_dict['avg_cc'] = calculate_avg_cc(file_path)
     report_dict['total_cc'] = calculate_total_cc(file_path)
+    report_dict['lines_over_max'] = count_lines(code_content) - max_file_lines
 
 
     with open(output_path, 'w') as file:

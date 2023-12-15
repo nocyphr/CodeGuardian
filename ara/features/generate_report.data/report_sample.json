@@ -1,5 +1,6 @@
 {
     "path": "./input/code_file.py", 
     "avg_cc": 2.0, 
-    "total_cc": 4.0
+    "total_cc": 4.0, 
+    "lines_over_max": 659
 }
