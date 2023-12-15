@@ -59,4 +59,4 @@ def generate_report(file_path: str, output_path='./output/report.json'):
 
 
 # Example usage:
-generate_report("./src/report.py")
+# generate_report("./src/report.py")
