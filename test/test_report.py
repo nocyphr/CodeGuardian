@@ -40,3 +40,11 @@ def test_that_calculate_total_cc_returns_total_cc():
 def test_that_count_lines_returns_number():
     content = read_file('./input/code_file.py')
     assert isinstance(count_lines(content), int)
+
+def test_that_count_lines_returns_number_of_lines():
+    content = read_file('./input/big_file.py')
+    assert count_lines(content) == 1159
+
+def test_that_count_lines_returns_number_of_lines2():
+    content = read_file('./input/code_file.py')
+    assert count_lines(content) == 35
