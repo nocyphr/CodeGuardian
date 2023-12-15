@@ -45,11 +45,12 @@ def generate_report(file_path: str, output_path='./output/report.json'):
     max_file_lines = 500
     code_content: str = read_file(file_path)
     code_lines: int = count_lines(code_content)
+
     report_dict: dict = add_path_to_report_dict(file_path)
     report_dict['avg_cc'] = calculate_avg_cc(file_path)
     report_dict['total_cc'] = calculate_total_cc(file_path)
     report_dict['lines_over_max'] =  '-' if code_lines < max_file_lines else code_lines - max_file_lines
-
+    
 
     with open(output_path, 'w') as file:
         dump(report_dict, file, indent=4)
