@@ -199,14 +199,16 @@ I want to have a report detailing what is currently wrong with  my code and wher
 path/to/file: 
 average cc - 2 
 total cc - 500
+lines over max - 100 # use nloc instead of current calc
 nesting over max - 3 
-lines over max - 100 
 used global vars - true 
 unwrapped logic - true 
+functions over max - 2
 
 	function1: 
-		lines over max - 10
-		parameters over max - 2
+		cc - 2 # lizard
+		lines over max - 10 # lizard
+		parameters over max - 2 # lizard
 		no return value - true
 		CQRS violated - true
 	
