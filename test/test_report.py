@@ -1,6 +1,6 @@
 from os.path import exists
 from json import load
-from src.report import generate_report, read_file, add_path_to_report_dict, calculate_avg_cc, calculate_total_cc
+from src.report import generate_report, read_file, add_path_to_report_dict, calculate_avg_cc, calculate_total_cc, count_lines
 from pytest import raises
 
 
@@ -36,3 +36,7 @@ def test_that_calculate_avg_cc_returns_avg_cc():
 
 def test_that_calculate_total_cc_returns_total_cc():
     assert calculate_total_cc('./input/code_file.py') == 4.0
+
+def test_that_count_lines_returns_number():
+    content = read_file('./input/code_file.py')
+    assert isinstance(count_lines(content), int)

@@ -1,7 +1,9 @@
 from os.path import exists
+from lizard import analyze_file
 from json import dump
 
-from lizard import analyze_file
+import re
+
 
 
 def read_file(file_path: str) -> str: 
@@ -14,6 +16,14 @@ def read_file(file_path: str) -> str:
     if not file_content.strip():
         raise Exception(f'file {file_path} did not contain code')
     return file_content
+
+
+def count_lines(file_content: str) -> int: 
+    regex_pattern = r'^(?!\s*$)(?!\s*#).+'
+    matches = re.findall(regex_pattern, file_content, re.MULTILINE)
+    return len(matches)
+
+
 
 def add_path_to_report_dict(file_path: str) -> dict: 
     return {'path': file_path}
@@ -32,10 +42,10 @@ def calculate_total_cc(file_path: str) -> float:
 
 
 def generate_report(file_path: str, output_path='./output/report.json'):
+    code_content: str = read_file(file_path)
     report_dict: dict = add_path_to_report_dict(file_path)
     report_dict['avg_cc'] = calculate_avg_cc(file_path)
     report_dict['total_cc'] = calculate_total_cc(file_path)
-    code_content: str = read_file(file_path)
 
 
     with open(output_path, 'w') as file:
