@@ -1,60 +1,57 @@
 from os.path import exists
 from lizard import analyze_file
 from json import dump
-
 import re
 
+class FileHandler:
+    def __init__(self, file_path: str):
+        self.file_path = file_path
+        self.max_file_lines = 500  # Hardcoded class variable
+
+        if not exists(self.file_path):
+            raise FileNotFoundError(f'No file found at {self.file_path}')
+
+        with open(self.file_path) as file:
+            self.file_content = file.read()
+
+        if not self.file_content.strip():
+            raise ValueError(f'File {self.file_path} did not contain code')
+
+        self.analysis_results = analyze_file(self.file_path)
+
+    def count_lines(self) -> int:
+        regex_pattern = r'^(?!\s*$)(?!\s*#).+'
+        matches = re.findall(regex_pattern, self.file_content, re.MULTILINE)
+        return len(matches)
+
+    def calculate_avg_cc(self) -> float:
+        return self.analysis_results.average_cyclomatic_complexity
+
+    def calculate_total_cc(self) -> float:
+        cc_per_function = [function.cyclomatic_complexity for function in self.analysis_results.function_list]
+        return float(sum(cc_per_function))
+
+    def create_report_dict(self) -> dict:
+        code_lines = self.count_lines()
+
+        report_dict = {'path': self.file_path}
+        report_dict['avg_cc'] = self.calculate_avg_cc()
+        report_dict['total_cc'] = self.calculate_total_cc()
+        report_dict['lines_over_max'] = '-' if code_lines < self.max_file_lines else code_lines - self.max_file_lines
+
+        return report_dict
 
 
-def read_file(file_path: str) -> str: 
-    if not exists(file_path):
-        raise FileNotFoundError(f'no file found at {file_path}')
-
-    with open(file_path) as file: 
-        file_content: str = file.read()
-
-    if not file_content.strip():
-        raise Exception(f'file {file_path} did not contain code')
-    return file_content
-
-
-def count_lines(file_content: str) -> int: 
-    regex_pattern = r'^(?!\s*$)(?!\s*#).+'
-    matches = re.findall(regex_pattern, file_content, re.MULTILINE)
-    return len(matches)
-
-
-def add_path_to_report_dict(file_path: str) -> dict: 
-    return {'path': file_path}
-
-
-def calculate_avg_cc(file_path: str) -> float: 
-    analysis_results: object = analyze_file(file_path)
-    avg_cc: float = analysis_results.average_cyclomatic_complexity
-    return avg_cc
-
-
-def calculate_total_cc(file_path: str) -> float: 
-    analysis_results: object = analyze_file(file_path)
-    cc_per_function: list = [function.cyclomatic_complexity for function in analysis_results.function_list]
-    total_cc: float = float(sum(cc_per_function))
-    return total_cc
+def write_file(output_path: str, data: dict):
+    with open(output_path, 'w') as file:
+        dump(data, file, indent=4)
 
 
 def generate_report(file_path: str, output_path='./output/report.json'):
-    max_file_lines = 500
-    code_content: str = read_file(file_path)
-    code_lines: int = count_lines(code_content)
-
-    report_dict: dict = add_path_to_report_dict(file_path)
-    report_dict['avg_cc'] = calculate_avg_cc(file_path)
-    report_dict['total_cc'] = calculate_total_cc(file_path)
-    report_dict['lines_over_max'] =  '-' if code_lines < max_file_lines else code_lines - max_file_lines
-    
-
-    with open(output_path, 'w') as file:
-        dump(report_dict, file, indent=4)
+    file_handler = FileHandler(file_path)
+    report_dict = file_handler.create_report_dict()
+    write_file(output_path, report_dict)
 
 
-# if __name__ == '__main__': 
-#     generate_report('./src/report.py')
+# Example usage:
+# generate_report("path/to/your/code.py")
