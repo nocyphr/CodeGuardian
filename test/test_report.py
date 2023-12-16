@@ -49,3 +49,8 @@ def test_that_filehandler_counts_correct_number_of_lines():
 def test_that_filehandler_counts_correct_number_of_lines2():
     file_handler = FileHandler('./input/code_file.py')
     assert file_handler.count_lines() == 35
+
+
+def test_that_calculate_diff_from_max_returns_number_if_max_smaller():
+    file_handler = FileHandler('./input/code_file.py')
+    assert file_handler.calculate_diff_from_max(analysis_result=1000, max_number=500) == 500
