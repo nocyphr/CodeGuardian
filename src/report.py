@@ -25,9 +25,7 @@ class FileHandler:
             raise ValueError(f'File {self.file_path} did not contain code')
 
     def count_lines(self) -> int:
-        regex_pattern = r'^(?!\s*$)(?!\s*#).+'
-        matches = re.findall(regex_pattern, self.file_content, re.MULTILINE)
-        return len(matches)
+        return self.analysis_results.nloc
 
     def calculate_avg_cc(self) -> float:
         return self.analysis_results.average_cyclomatic_complexity
