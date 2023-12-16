@@ -8,6 +8,7 @@ import re
 class FileHandler:
     def __init__(self, file_path: str):
         self.max_file_lines: int = 500
+        self.max_functions: int = 50
         self.file_content: str = ''
 
         self.file_path: str = file_path
@@ -24,6 +25,15 @@ class FileHandler:
         if not self.file_content.strip():
             raise ValueError(f'File {self.file_path} did not contain code')
 
+    def calculate_diff_from_max(self, analysis_result: int, max_number: int) -> int:
+        if analysis_result < max_number: 
+            return '-'
+        if analysis_result >= max_number: 
+            return analysis_result - max_number
+
+    def count_functions(self) -> int:
+        return len(self.analysis_results.function_list)
+
     def count_lines(self) -> int:
         return self.analysis_results.nloc
 
@@ -36,11 +46,13 @@ class FileHandler:
 
     def create_report_dict(self) -> dict:
         code_lines: int = self.count_lines()
+        function_number: int = self.count_functions()
 
         report_dict: dict = {'path': self.file_path}
         report_dict['avg_cc'] = self.calculate_avg_cc()
         report_dict['total_cc'] = self.calculate_total_cc()
-        report_dict['lines_over_max'] = '-' if code_lines < self.max_file_lines else code_lines - self.max_file_lines
+        report_dict['lines_over_max'] = self.calculate_diff_from_max(analysis_result=code_lines, max_number=self.max_file_lines)
+        report_dict['functions_over_max'] = self.calculate_diff_from_max(analysis_result=function_number, max_number=self.max_functions)
 
         return report_dict
 
