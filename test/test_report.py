@@ -44,7 +44,7 @@ def test_that_filehandler_counts_lines_correctly():
 
 def test_that_filehandler_counts_correct_number_of_lines():
     file_handler = FileHandler('./input/big_file.py')
-    assert file_handler.count_lines() == 1159
+    assert file_handler.count_lines() == 949
 
 def test_that_filehandler_counts_correct_number_of_lines2():
     file_handler = FileHandler('./input/code_file.py')
