@@ -199,11 +199,12 @@ I want to have a report detailing what is currently wrong with  my code and wher
 path/to/file: 
 average cc - 2 
 total cc - 500
-lines over max - 100 # use nloc instead of current calc
+lines over max - 100
+functions over max - 2
+# agent
 nesting over max - 3 
 used global vars - true 
 unwrapped logic - true 
-functions over max - 2
 
 	function1: 
 		cc - 2 # lizard
@@ -226,6 +227,7 @@ functions over max - 2
 ### config
 ```
 max_methods: 20
+max_functions: 50
 function_max_lines: 15
 max_parameters: 4
 class_max_lines: 200
