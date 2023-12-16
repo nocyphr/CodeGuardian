@@ -29,7 +29,9 @@ Feature: generate_report
     Then the datapoint <datapoint> contains <data>
 
     Examples: 
-    | input_file_path       | datapoint       | data  |
-    | ./input/code_file.py  | lines_over_max  | -     |
-    | ./input/big_file.py   | lines_over_max  | 449   |
+    | input_file_path       | datapoint           | data  |
+    | ./input/code_file.py  | lines_over_max      | -     |
+    | ./input/big_file.py   | lines_over_max      | 449   |
+    | ./input/big_file.py   | functions_over_max  | -     |
+
 
