@@ -195,22 +195,23 @@ I want to have a report detailing what is currently wrong with  my code and wher
 - violations of CQRS principle (command query separation) per method/function
 
 ### Examples (v1)
-```
-path/to/file: 
-average cc - 2 
-total cc - 500
-lines over max - 100
-functions over max - 2
-# agent
+-[x] path/to/file: 
+-[x] average cc - 2 
+-[x] total cc - 500
+-[x] lines over max - 100
+-[x] functions over max - 2
+// agent
 nesting over max - 3 
 used global vars - true 
 unwrapped logic - true 
 
 	function1: 
+  --> continue here by first writing another scenario (given code_file.py, when I analyze my bla, and I read bla, then there is a list of examples of each function and its parameters)
 		cc - 2 # lizard
 		lines over max - 10 # lizard
 		parameters over max - 2 # lizard
-		no return value - true
+    //agent
+		no return value - true # possibly I could check for existance of "return" string between start and end line of each function
 		CQRS violated - true
 	
 	lines: 
@@ -221,7 +222,7 @@ unwrapped logic - true
 		methods over max - 3
 		parameters over max - 1
 		lines over max - 50
-```
+
 
 
 ### config
