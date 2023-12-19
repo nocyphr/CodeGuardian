@@ -54,3 +54,8 @@ def test_that_filehandler_counts_correct_number_of_lines2():
 def test_that_calculate_diff_from_max_returns_number_if_max_smaller():
     file_handler = FileHandler('./input/code_file.py')
     assert file_handler.calculate_diff_from_max(analysis_result=1000, max_number=500) == 500
+
+def test_that_create_functions_report_returns_dict():
+    file_handler = FileHandler('./input/code_file.py')
+    result = str(file_handler.create_functions_report())
+    assert result == "{'main': {'cc': 1}, 'join': {'cc': 3}}"
