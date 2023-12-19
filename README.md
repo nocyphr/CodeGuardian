@@ -201,9 +201,8 @@ I want to have a report detailing what is currently wrong with  my code and wher
 -[x] lines over max - 100
 -[x] functions over max - 2
 // agent
-nesting over max - 3 
-used global vars - true 
-unwrapped logic - true 
+- [ ] unwrapped logic - true 
+- [ ] unwrapped vars - true 
 
 	function1: 
   --> continue here by first writing another scenario (given code_file.py, when I analyze my bla, and I read bla, then there is a list of examples of each function and its parameters)
@@ -211,17 +210,18 @@ unwrapped logic - true
 		- [x] lines over max - 10 # lizard
 		- [x] parameters over max - 2 # lizard
     //agent
-		no return value - true # possibly I could check for existance of "return" string between start and end line of each function
-		CQRS violated - true
+    - [ ] nesting over max - 3 
+		- [ ] no return value - true # possibly I could check for existance of "return" string between start and end line of each function
+		- [ ] CQRS violated - true
 	
 	lines: 
-		abbreviation - lines[1, 6, 33, 65]
-		used ELSE - lines[3,5, 25]
+		- [ ] abbreviation - lines[1, 6, 33, 65]
+		- [ ] used ELSE - lines[3,5, 25]
 		
 	classA: 
-		methods over max - 3
-		parameters over max - 1
-		lines over max - 50
+		- [ ] methods over max - 3
+		- [ ] parameters over max - 1
+		- [ ] lines over max - 50
 
 
 
