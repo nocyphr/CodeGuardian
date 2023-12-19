@@ -43,8 +43,13 @@ Feature: generate_report
     And a code file "<input_file_path>"
     When I analyze the code file
     And I read the report file
-    Then there is a function_list with the datapoint <datapoint> containing <data>
+    Then there is a function <function_name> with the datapoint <datapoint> containing <data>
 
     Examples: 
-    | input_file_path       | datapoint           | data  |
-    | ./input/code_file.py  | lines_over_max      | -     |
+    | input_file_path       | function_name | datapoint           | data  |
+    | ./input/code_file.py  | main          | lines_over_max      | 3     |
+    | ./input/code_file.py  | main          | cc                  | 1     |
+    | ./input/code_file.py  | main          | parameters_over_max | -     |
+    | ./input/big_file.py   | make_subplots | lines_over_max      | 372   |
+    | ./input/big_file.py   | make_subplots | cc                  | 106   |
+    | ./input/big_file.py   | make_subplots | parameters_over_max | 17    |

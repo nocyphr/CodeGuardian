@@ -207,9 +207,9 @@ unwrapped logic - true
 
 	function1: 
   --> continue here by first writing another scenario (given code_file.py, when I analyze my bla, and I read bla, then there is a list of examples of each function and its parameters)
-		cc - 2 # lizard
-		lines over max - 10 # lizard
-		parameters over max - 2 # lizard
+		- [x] cc - 2 # lizard
+		- [x] lines over max - 10 # lizard
+		- [x] parameters over max - 2 # lizard
     //agent
 		no return value - true # possibly I could check for existance of "return" string between start and end line of each function
 		CQRS violated - true

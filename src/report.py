@@ -10,6 +10,8 @@ class FileHandler:
         self.max_file_lines: int = 500
         self.max_functions: int = 50
         self.file_content: str = ''
+        self.max_function_lines: int = 15
+        self.max_parameters: int = 3
 
         self.file_path: str = file_path
         self.read_file()
@@ -30,6 +32,17 @@ class FileHandler:
             return '-'
         if analysis_result >= max_number: 
             return analysis_result - max_number
+
+
+    def create_functions_report(self): 
+        report_dict = {'functions': {}}
+        for function in self.analysis_results.function_list:
+            report_dict['functions'][function.name] = {
+                'cc': function.cyclomatic_complexity, 
+                'lines_over_max': self.calculate_diff_from_max(function.nloc, self.max_function_lines),
+                'parameters_over_max': self.calculate_diff_from_max(function.parameter_count, self.max_parameters)
+            }
+        return report_dict['functions']
 
     def count_functions(self) -> int:
         return len(self.analysis_results.function_list)
@@ -53,7 +66,7 @@ class FileHandler:
         report_dict['total_cc'] = self.calculate_total_cc()
         report_dict['lines_over_max'] = self.calculate_diff_from_max(analysis_result=code_lines, max_number=self.max_file_lines)
         report_dict['functions_over_max'] = self.calculate_diff_from_max(analysis_result=function_number, max_number=self.max_functions)
-
+        report_dict['functions'] = self.create_functions_report()
         return report_dict
 
 
