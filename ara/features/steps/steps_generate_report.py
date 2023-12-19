@@ -29,3 +29,7 @@ def step_impl(context):
 def step_impl(context, datapoint, data):
     print(context.report_dict[datapoint], data)
     assert str(context.report_dict[datapoint]) == data
+
+@then(u'there is a function_list with the datapoint lines_over_max containing -')
+def step_impl(context):
+    raise NotImplementedError(u'STEP: Then there is a filelist with the datapoint lines_over_max containing -')

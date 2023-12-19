@@ -35,3 +35,16 @@ Feature: generate_report
     | ./input/big_file.py   | functions_over_max  | -     |
 
 
+# given code_file.py, when I analyze my bla, and I read bla, then there is a list of examples of each function and its parameters
+
+
+  Scenario Outline: report contains lines_over_max if long file was input
+    Given a report file "./output/report.json"
+    And a code file "<input_file_path>"
+    When I analyze the code file
+    And I read the report file
+    Then there is a function_list with the datapoint <datapoint> containing <data>
+
+    Examples: 
+    | input_file_path       | datapoint           | data  |
+    | ./input/code_file.py  | lines_over_max      | -     |
